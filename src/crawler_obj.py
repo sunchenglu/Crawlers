@@ -31,7 +31,7 @@ class Crawler_Base(object):
 
 			self.thread_stop = self.download_page()
 
-		print '爬取线程已停止'
+		print '爬取线程已停止,按ctrl+c退出'
 
 		thread.exit_thread()
 
