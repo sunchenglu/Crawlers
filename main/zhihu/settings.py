@@ -16,6 +16,8 @@ HEADERS = {
     "X-Requested-With": "XMLHttpRequest"
 }
 
+
+#请在此填入帐号密码
 USER = {
 	'phone_num': '',
 	'password': '',
@@ -24,3 +26,6 @@ USER = {
 HOME_URL = 'http://www.zhihu.com'
 
 LOGIN_URL = "https://www.zhihu.com/login/phone_num"
+
+#同一个回答抓取最大图片数
+MAX_IMG_NUM = 10
