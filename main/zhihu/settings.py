@@ -19,8 +19,8 @@ HEADERS = {
 
 #请在此填入帐号密码
 USER = {
-	'phone_num': '',
-	'password': '',
+	'phone_num':'',
+	'password':'',
 }
 
 HOME_URL = 'http://www.zhihu.com'

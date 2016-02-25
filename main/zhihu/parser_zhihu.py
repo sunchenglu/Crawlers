@@ -3,9 +3,6 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 import urllib2,pdb,re,requests,json,time,os
-
-from urlparse import urlsplit
-from os.path import basename
 from bs4 import BeautifulSoup
 
 import settings
@@ -71,18 +68,19 @@ class Crawler(Crawler_Base):
 						img_tag_list = img_tag_list[:settings.MAX_IMG_NUM*2]
 					for img_tag in img_tag_list:
 						img_src_list.append(img_tag['src'])
+					pic_index = 0
 					for img_src in img_src_list:
 						try:
 							if img_src.startswith('https://'):
-								img_data = urllib2.urlopen(img_src).read()
-								file_name = basename(urlsplit(img_src)[2])
+								img_data = requests.get(img_src,stream=True,verify=False).content
+								file_name = 'pic' + str(pic_index) + '.jpg'
 								output = open(a_dir + '/images/' + file_name, 'wb')
 								output.write(img_data)
 								output.close()
+								pic_index += 1
 						except Exception, e:
 							print "处理图片出现错误..."
 			except Exception, e:
-				pdb.set_trace()
 				print "处理回答出现错误..."
 		print "该问题答案爬取完成..."
 
@@ -130,8 +128,6 @@ class Crawler(Crawler_Base):
 			return q_dir
 		except Exception, e:
 			print "获取问题详情时出错..."
-		
-
 
 	def login(self):
 		print "登录中..."
