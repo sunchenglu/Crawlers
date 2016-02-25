@@ -41,5 +41,3 @@ class Crawler_Base(object):
 	def download_page(self):
 		pass
 		return True
-		
-test = 5
